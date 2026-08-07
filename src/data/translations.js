@@ -1,18 +1,22 @@
-const translations = {
+export const translations = {
   en: {
     brandTag: "PORTFOLIO / 2026",
     navAbout: "About",
     navSkills: "Skills",
     navWork: "Work",
     navJourney: "Journey",
+    navResume: "CV",
     navContact: "Contact",
     startConversation: "Start a conversation",
-    available: "AVAILABLE FOR INTERN / FRESHER",
+    metaFinalYear: "FINAL-YEAR CS",
+    metaAvailable: "AVAILABLE 12.2026",
+    metaRoute: "CẦN THƠ → HCMC",
+    available: "OPEN FOR AI INTERN / FRESHER · DEC 2026",
     heroEyebrow: "— AI ENGINEERING STUDENT",
     heroLine1: "Build ideas.",
     heroLine2: "Make them intelligent.",
-    heroRole: "Computer Science Student",
-    heroMeta: "Cần Thơ University · K49 · AI Engineering direction",
+    heroRole: "Final-year Computer Science Student",
+    heroMeta: "Cần Thơ University · K49 · Expected graduation early 2027",
     heroDescription:
       "I turn academic foundations into useful software — from hybrid retrieval and local LLM systems to desktop tools and full-stack products.",
     exploreWork: "Explore selected work",
@@ -20,12 +24,13 @@ const translations = {
     metricGpa: "Current GPA",
     metricProjects: "Academic & personal projects",
     metricCtu: "Computer Science · CTU",
+    metricGraduation: "Expected graduation",
     aboutTitle: "Curiosity becomes capability when it ships.",
     background: "BACKGROUND",
     direction: "DIRECTION",
     aboutChapter1Title: "A computer science student building beyond the syllabus.",
     aboutChapter1Body:
-      "I am a third-year Computer Science student at Cần Thơ University. My work sits between artificial intelligence and practical software engineering, with a focus on systems people can actually use.",
+      "I am a fourth-year, final-year Computer Science student at Cần Thơ University, expecting to graduate in early 2027. My work sits between artificial intelligence and practical software engineering, with a focus on systems people can actually use.",
     aboutChapter2Title: "Retrieval, local AI and thoughtful product engineering.",
     aboutChapter2Body:
       "I explore hybrid search, RAG pipelines and LLM-assisted experiences while continuing to strengthen the fundamentals: algorithms, databases, web systems and clean version control.",
@@ -74,11 +79,13 @@ const translations = {
     universityBody:
       "Building foundations in algorithms, machine learning, deep learning, databases and software engineering. Current GPA: 3.3/4.0.",
     present: "PRESENT",
-    independentTitle: "Independent Projects & Freelance Practice",
+    independentTitle: "Independent & Academic Projects",
     independentBody:
-      "Turning coursework into complete applications and exploring AI-augmented development through retrieval systems, desktop tools and web products.",
-    recognition: "ACADEMIC RECOGNITION",
-    awardBody: "Recognition through academic effort, student development and programming activities.",
+      "Turning coursework into complete applications and exploring AI-augmented development through retrieval systems, desktop tools and web products — without presenting personal projects as client work.",
+    recognition: "CERTIFICATIONS & COURSEWORK",
+    kaggleCertificateTitle: "Machine Learning & Deep Learning Practice",
+    kaggleCertificateBody:
+      "Several Kaggle Learn certificates focused on practical machine-learning libraries and deep-learning workflows. Individual certificate links will be added later.",
     process: "Process",
     processTitle: "How I approach a build.",
     processIntro: "A compact loop for turning an uncertain problem into testable, understandable software.",
@@ -91,13 +98,38 @@ const translations = {
     process4Title: "Document and improve.",
     process4Body: "Make setup repeatable, record decisions and turn feedback into the next version.",
     contactTitle: "Let’s build something worth learning from.",
-    contactIntro: "I am currently open to AI Engineering internships, fresher roles and thoughtful collaborations.",
+    contactIntro:
+      "I am open to AI Engineering internships and fresher roles aligned with Computer Science, available from December 2026 for onsite work in Hồ Chí Minh City.",
     writeEmail: "Write an email",
     copyEmail: "Copy email",
     copied: "Copied!",
     preferredChannel: "Preferred channel for opportunities",
     publicCode: "Public code and project history",
     professionalProfile: "Professional profile and connections",
+    workPreferenceShort: "Available Dec 2026 · Onsite in Hồ Chí Minh City",
+    liveDemo: "Live demo",
+    videoDemo: "Video demo",
+    comingSoon: "Soon",
+    projectDuration: "DURATION",
+    projectTeamSize: "TEAM SIZE",
+    projectResponsibilities: "RESPONSIBILITIES",
+    projectOutcomes: "OUTCOMES",
+    resumeKicker: "CV / Résumé",
+    resumeTitle: "A focused profile for the first AI engineering role.",
+    resumeIntro:
+      "The downloadable CV is being prepared. This section already contains the key availability and career information recruiters need.",
+    resumeStatus: "CV FILE · PENDING",
+    resumeTargetLabel: "TARGET ROLE",
+    resumeTargetValue: "AI Engineer Intern / Fresher",
+    resumeAvailabilityLabel: "AVAILABLE FROM",
+    resumeAvailabilityValue: "December 2026",
+    resumeWorkModeLabel: "WORK PREFERENCE",
+    resumeWorkModeValue: "Onsite · Hồ Chí Minh City",
+    resumeEducationLabel: "EDUCATION",
+    resumeEducationValue: "Final-year Computer Science · CTU · Graduating early 2027",
+    downloadCv: "Download CV",
+    cvPending: "CV coming soon",
+    resumeHint: "Add the final PDF to public/cv/pham-duy-anh-cv.pdf, then set resumeUrl in portfolio.js.",
     crafted: "DESIGNED & BUILT WITH INTENTION",
   },
   vi: {
@@ -106,14 +138,18 @@ const translations = {
     navSkills: "Kỹ năng",
     navWork: "Dự án",
     navJourney: "Hành trình",
+    navResume: "CV",
     navContact: "Liên hệ",
     startConversation: "Bắt đầu trò chuyện",
-    available: "SẴN SÀNG CHO INTERN / FRESHER",
+    metaFinalYear: "SINH VIÊN NĂM CUỐI",
+    metaAvailable: "SẴN SÀNG TỪ 12.2026",
+    metaRoute: "CẦN THƠ → TP.HCM",
+    available: "TÌM AI INTERN / FRESHER · TỪ 12/2026",
     heroEyebrow: "— SINH VIÊN KỸ THUẬT AI",
     heroLine1: "Biến ý tưởng.",
     heroLine2: "Thành trí tuệ.",
-    heroRole: "Sinh viên Khoa học Máy tính",
-    heroMeta: "Đại học Cần Thơ · K49 · Định hướng AI Engineering",
+    heroRole: "Sinh viên năm cuối Khoa học Máy tính",
+    heroMeta: "Đại học Cần Thơ · K49 · Dự kiến tốt nghiệp đầu năm 2027",
     heroDescription:
       "Tôi biến nền tảng học thuật thành phần mềm hữu ích — từ tìm kiếm lai và LLM cục bộ đến ứng dụng desktop và sản phẩm full-stack.",
     exploreWork: "Khám phá dự án",
@@ -121,12 +157,13 @@ const translations = {
     metricGpa: "GPA hiện tại",
     metricProjects: "Dự án học thuật & cá nhân",
     metricCtu: "Khoa học Máy tính · CTU",
+    metricGraduation: "Dự kiến tốt nghiệp",
     aboutTitle: "Tò mò trở thành năng lực khi sản phẩm được hoàn thiện.",
     background: "NỀN TẢNG",
     direction: "ĐỊNH HƯỚNG",
     aboutChapter1Title: "Một sinh viên Khoa học Máy tính luôn xây nhiều hơn giáo trình.",
     aboutChapter1Body:
-      "Tôi là sinh viên năm ba ngành Khoa học Máy tính tại Đại học Cần Thơ. Công việc của tôi nằm giữa trí tuệ nhân tạo và kỹ nghệ phần mềm thực tiễn, tập trung vào những hệ thống người dùng thật sự có thể sử dụng.",
+      "Tôi là sinh viên năm tư, năm cuối ngành Khoa học Máy tính tại Đại học Cần Thơ, dự kiến tốt nghiệp đầu năm 2027. Công việc của tôi nằm giữa trí tuệ nhân tạo và kỹ nghệ phần mềm thực tiễn, tập trung vào những hệ thống người dùng thật sự có thể sử dụng.",
     aboutChapter2Title: "Truy xuất, AI cục bộ và kỹ nghệ sản phẩm có chủ đích.",
     aboutChapter2Body:
       "Tôi khám phá tìm kiếm lai, quy trình RAG và trải nghiệm hỗ trợ bởi LLM, đồng thời tiếp tục củng cố nền tảng: thuật toán, cơ sở dữ liệu, hệ thống web và quản lý phiên bản sạch.",
@@ -175,11 +212,13 @@ const translations = {
     universityBody:
       "Xây nền tảng về thuật toán, machine learning, deep learning, cơ sở dữ liệu và kỹ nghệ phần mềm. GPA hiện tại: 3.3/4.0.",
     present: "HIỆN TẠI",
-    independentTitle: "Dự án độc lập & Thực hành freelance",
+    independentTitle: "Dự án độc lập & Học thuật",
     independentBody:
-      "Biến kiến thức môn học thành ứng dụng hoàn chỉnh và khám phá phát triển hỗ trợ bởi AI qua hệ thống truy xuất, công cụ desktop và sản phẩm web.",
-    recognition: "GHI NHẬN HỌC THUẬT",
-    awardBody: "Ghi nhận từ nỗ lực học tập, phát triển sinh viên và các hoạt động lập trình.",
+      "Biến kiến thức môn học thành ứng dụng hoàn chỉnh và khám phá phát triển hỗ trợ bởi AI qua hệ thống truy xuất, công cụ desktop và sản phẩm web — không trình bày dự án cá nhân như kinh nghiệm khách hàng.",
+    recognition: "CHỨNG CHỈ & KHÓA HỌC",
+    kaggleCertificateTitle: "Thực hành Machine Learning & Deep Learning",
+    kaggleCertificateBody:
+      "Một số chứng chỉ Kaggle Learn về sử dụng thư viện học máy và quy trình deep learning thực hành. Link từng chứng chỉ sẽ được bổ sung sau.",
     process: "Quy trình",
     processTitle: "Cách tôi tiếp cận một sản phẩm.",
     processIntro: "Một vòng lặp gọn để biến bài toán chưa rõ thành phần mềm có thể kiểm thử và dễ hiểu.",
@@ -192,147 +231,38 @@ const translations = {
     process4Title: "Tài liệu hóa và cải tiến.",
     process4Body: "Giúp thiết lập có thể lặp lại, ghi nhận quyết định và biến phản hồi thành phiên bản tiếp theo.",
     contactTitle: "Cùng xây một điều đáng để học hỏi.",
-    contactIntro: "Tôi hiện sẵn sàng cho vị trí AI Engineering Intern, Fresher và những cơ hội cộng tác có ý nghĩa.",
+    contactIntro:
+      "Tôi đang tìm vị trí AI Engineering Intern hoặc Fresher phù hợp chuyên ngành Khoa học Máy tính, có thể bắt đầu từ tháng 12/2026 và mong muốn làm việc trực tiếp tại TP. Hồ Chí Minh.",
     writeEmail: "Gửi email",
     copyEmail: "Sao chép email",
     copied: "Đã sao chép!",
     preferredChannel: "Kênh ưu tiên cho cơ hội nghề nghiệp",
     publicCode: "Mã nguồn công khai và lịch sử dự án",
     professionalProfile: "Hồ sơ nghề nghiệp và kết nối",
+    workPreferenceShort: "Có thể bắt đầu 12/2026 · Onsite tại TP.HCM",
+    liveDemo: "Demo trực tiếp",
+    videoDemo: "Video demo",
+    comingSoon: "Sắp bổ sung",
+    projectDuration: "THỜI GIAN",
+    projectTeamSize: "QUY MÔ NHÓM",
+    projectResponsibilities: "TRÁCH NHIỆM",
+    projectOutcomes: "KẾT QUẢ",
+    resumeKicker: "CV / Hồ sơ",
+    resumeTitle: "Hồ sơ tập trung cho vai trò AI Engineering đầu tiên.",
+    resumeIntro:
+      "CV tải xuống đang được chuẩn bị. Phần này đã hiển thị sẵn các thông tin quan trọng về định hướng và thời gian làm việc.",
+    resumeStatus: "TỆP CV · CHỜ BỔ SUNG",
+    resumeTargetLabel: "VỊ TRÍ MỤC TIÊU",
+    resumeTargetValue: "AI Engineer Intern / Fresher",
+    resumeAvailabilityLabel: "CÓ THỂ BẮT ĐẦU",
+    resumeAvailabilityValue: "Tháng 12/2026",
+    resumeWorkModeLabel: "HÌNH THỨC MONG MUỐN",
+    resumeWorkModeValue: "Onsite · TP. Hồ Chí Minh",
+    resumeEducationLabel: "HỌC VẤN",
+    resumeEducationValue: "Năm cuối Khoa học Máy tính · CTU · Tốt nghiệp đầu 2027",
+    downloadCv: "Tải CV",
+    cvPending: "CV sắp được bổ sung",
+    resumeHint: "Thêm PDF vào public/cv/pham-duy-anh-cv.pdf, sau đó cập nhật resumeUrl trong portfolio.js.",
     crafted: "THIẾT KẾ & XÂY DỰNG CÓ CHỦ ĐÍCH",
   },
 };
-
-const root = document.documentElement;
-const header = document.getElementById("siteHeader");
-const progress = document.getElementById("scrollProgress");
-const backToTop = document.getElementById("backToTop");
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const languageToggle = document.getElementById("languageToggle");
-const languageLabel = document.getElementById("languageLabel");
-const copyEmail = document.getElementById("copyEmail");
-const cursorGlow = document.getElementById("cursorGlow");
-const email = "phamduyanh.01062005da@gmail.com";
-
-let currentLanguage = localStorage.getItem("portfolio-language") || "en";
-let copyResetTimer;
-
-function applyLanguage(language) {
-  currentLanguage = language;
-  root.lang = language;
-  localStorage.setItem("portfolio-language", language);
-  languageLabel.textContent = language.toUpperCase();
-  languageToggle.querySelector(".muted").textContent = language === "en" ? "/VI" : "/EN";
-
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const value = translations[language][element.dataset.i18n];
-    if (value) element.textContent = value;
-  });
-}
-
-function closeMenu() {
-  mobileMenu.classList.remove("open");
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Open menu");
-  document.body.classList.remove("menu-open");
-}
-
-function updateScrollUi() {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
-  progress.style.transform = `scaleX(${ratio})`;
-  header.classList.toggle("scrolled", window.scrollY > 16);
-  backToTop.classList.toggle("visible", window.scrollY > window.innerHeight * 0.7);
-}
-
-applyLanguage(currentLanguage);
-updateScrollUi();
-
-window.addEventListener("scroll", updateScrollUi, { passive: true });
-
-languageToggle.addEventListener("click", () => {
-  applyLanguage(currentLanguage === "en" ? "vi" : "en");
-});
-
-menuToggle.addEventListener("click", () => {
-  const shouldOpen = menuToggle.getAttribute("aria-expanded") !== "true";
-  menuToggle.setAttribute("aria-expanded", String(shouldOpen));
-  menuToggle.setAttribute("aria-label", shouldOpen ? "Close menu" : "Open menu");
-  mobileMenu.classList.toggle("open", shouldOpen);
-  document.body.classList.toggle("menu-open", shouldOpen);
-});
-
-mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-
-backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-copyEmail.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(email);
-  } catch {
-    const textArea = document.createElement("textarea");
-    textArea.value = email;
-    textArea.style.position = "fixed";
-    textArea.style.opacity = "0";
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    textArea.remove();
-  }
-
-  clearTimeout(copyResetTimer);
-  copyEmail.querySelector("span").textContent = translations[currentLanguage].copied;
-  copyResetTimer = setTimeout(() => {
-    copyEmail.querySelector("span").textContent = translations[currentLanguage].copyEmail;
-  }, 1800);
-});
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12, rootMargin: "0px 0px -30px" },
-);
-
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-
-const sections = [...document.querySelectorAll("main section[id]")];
-const desktopLinks = [...document.querySelectorAll(".desktop-nav a")];
-
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visible) return;
-    desktopLinks.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === `#${visible.target.id}`);
-    });
-  },
-  { threshold: [0.2, 0.45, 0.7], rootMargin: "-20% 0px -55%" },
-);
-
-sections.forEach((section) => sectionObserver.observe(section));
-
-if (window.matchMedia("(pointer: fine)").matches) {
-  window.addEventListener("pointermove", (event) => {
-    cursorGlow.style.left = `${event.clientX}px`;
-    cursorGlow.style.top = `${event.clientY}px`;
-    cursorGlow.style.opacity = "1";
-  });
-
-  document.documentElement.addEventListener("mouseleave", () => {
-    cursorGlow.style.opacity = "0";
-  });
-}
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 1100) closeMenu();
-});
