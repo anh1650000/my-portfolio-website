@@ -1,5 +1,5 @@
 <script setup>
-import { skillSnapshot } from "../data/portfolio";
+import { profile, stackOverview } from "../data/portfolio";
 import { useI18n } from "../composables/useI18n";
 
 const { t } = useI18n();
@@ -33,43 +33,39 @@ const { t } = useI18n();
           <div class="hero-actions">
             <a class="button button-primary" href="#work">
               <span>{{ t("exploreWork") }}</span>
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
-            </a>
-            <a class="button button-ghost" href="#about">
-              <span>{{ t("seeJourney") }}</span>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10m-4-4 4 4 4-4" /></svg>
+            </a>
+            <a class="button button-ghost" :href="profile.github" target="_blank" rel="noreferrer">
+              <span>{{ t("githubProfile") }}</span>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
             </a>
           </div>
         </div>
 
-        <aside class="terminal reveal" aria-label="Technical profile snapshot">
+        <aside class="terminal reveal" aria-label="Technical stack overview">
           <div class="terminal-chrome">
             <span class="window-dots"><i></i><i></i><i></i></span>
-            <span>~/duy-anh/profile</span>
-            <small><i></i> read-only</small>
+            <span>~/duy-anh/stack</span>
+            <small><i></i> 2026.11</small>
           </div>
           <div class="terminal-body">
             <div class="scan-line" aria-hidden="true"></div>
-            <p class="terminal-prompt"><span>$</span> cat strengths.toml</p>
-            <p class="terminal-comment"># current capability snapshot</p>
-            <ul class="skill-snapshot">
-              <li
-                v-for="(skill, index) in skillSnapshot"
-                :key="skill.name"
-                :style="{ '--level': `${skill.level}%`, '--delay': `${0.1 + index * 0.08}s` }"
-              >
-                <span>{{ skill.name }}</span><i><b></b></i><strong>{{ skill.level }}</strong>
+            <p class="terminal-prompt"><span>$</span> cat stack.toml</p>
+            <ul class="stack-overview">
+              <li v-for="item in stackOverview" :key="item.area">
+                <span>{{ item.area }}</span>
+                <strong>{{ item.tools }}</strong>
               </li>
             </ul>
-            <div class="terminal-footer"><span>status: <b>learning_every_day</b></span><i>▮</i></div>
+            <div class="terminal-footer"><span>focus: <b>AI · CV · LLM Systems</b></span><i>▮</i></div>
           </div>
         </aside>
       </div>
 
       <div class="hero-foot reveal">
-        <span>SCROLL TO INSPECT</span>
+        <span>CAN THO UNIVERSITY · K49</span>
         <i></i>
-        <span>01 / 06</span>
+        <span>GITHUB.COM/ANH1650000</span>
       </div>
     </div>
   </section>

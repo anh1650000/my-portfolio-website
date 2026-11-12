@@ -1,17 +1,9 @@
 <script setup>
-import { projects } from "../data/portfolio";
+import { profile, projects } from "../data/portfolio";
 import { useI18n } from "../composables/useI18n";
 
 const { t } = useI18n();
-
-function hasExtraDetails(project) {
-  return Boolean(
-    project.duration ||
-      project.teamSize ||
-      project.responsibilities?.length ||
-      project.outcomes?.length,
-  );
-}
+const totalProjects = String(projects.length).padStart(2, "0");
 </script>
 
 <template>
@@ -32,7 +24,7 @@ function hasExtraDetails(project) {
           class="project-card reveal"
           :class="{ featured: project.featured }"
         >
-          <div class="project-number"><span>{{ project.number }}</span><small>/05</small></div>
+          <div class="project-number"><span>{{ project.number }}</span><small>/{{ totalProjects }}</small></div>
           <div class="project-main">
             <p class="project-meta"><span>{{ project.metaKey ? t(project.metaKey) : project.meta }}</span><b>{{ project.year }}</b></p>
             <h3>{{ project.title }}</h3>
@@ -45,52 +37,39 @@ function hasExtraDetails(project) {
               </div>
             </div>
 
-            <div v-if="hasExtraDetails(project)" class="project-case-study">
-              <div v-if="project.duration"><small>{{ t("projectDuration") }}</small><strong>{{ project.duration }}</strong></div>
-              <div v-if="project.teamSize"><small>{{ t("projectTeamSize") }}</small><strong>{{ project.teamSize }}</strong></div>
-              <div v-if="project.responsibilities?.length">
-                <small>{{ t("projectResponsibilities") }}</small>
-                <ul><li v-for="item in project.responsibilities" :key="item">{{ item }}</li></ul>
-              </div>
-              <div v-if="project.outcomes?.length">
+            <div v-if="project.outcomes?.length" class="project-case-study">
+              <div>
                 <small>{{ t("projectOutcomes") }}</small>
-                <ul><li v-for="item in project.outcomes" :key="item">{{ item }}</li></ul>
+                <ul>
+                  <li v-for="item in project.outcomes" :key="item.textKey">{{ t(item.textKey) }}</li>
+                </ul>
               </div>
             </div>
 
             <div class="project-actions">
-              <a :href="project.url" target="_blank" rel="noreferrer">
+              <a v-if="project.url" :href="project.url" target="_blank" rel="noreferrer">
                 <span>{{ t("viewRepository") }}</span>
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
               </a>
-              <a v-if="project.liveDemoUrl" :href="project.liveDemoUrl" target="_blank" rel="noreferrer">
-                <span>{{ t("liveDemo") }}</span>
-                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
-              </a>
-              <span v-else class="project-action-disabled">{{ t("liveDemo") }} · {{ t("comingSoon") }}</span>
-              <a v-if="project.videoDemoUrl" :href="project.videoDemoUrl" target="_blank" rel="noreferrer">
-                <span>{{ t("videoDemo") }}</span>
-                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
-              </a>
-              <span v-else class="project-action-disabled">{{ t("videoDemo") }} · {{ t("comingSoon") }}</span>
+              <span v-else-if="project.noteKey" class="project-note">{{ t(project.noteKey) }}</span>
             </div>
           </div>
 
           <div v-if="project.featured" class="project-visual ai-visual" aria-hidden="true">
             <div class="nodes"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="query">QUERY → RETRIEVE → GROUND → ANSWER</div>
-            <span>RAG.PIPELINE / LIVE</span>
+            <div class="query">PARSE → EXTRACT → VERIFY → RECONCILE → REPORT</div>
+            <span>LANGGRAPH.STATEGRAPH</span>
           </div>
         </article>
       </div>
 
       <a
         class="dossier-link reveal"
-        href="https://github.com/anh1650000?tab=repositories"
+        :href="`${profile.github}?tab=repositories`"
         target="_blank"
         rel="noreferrer"
       >
-        <span>★ END OF DOSSIER · {{ t("allProjects") }} ★</span>
+        <span>{{ t("allProjects") }} ↗</span>
       </a>
     </div>
   </section>

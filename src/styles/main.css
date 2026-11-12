@@ -38,7 +38,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.menu-open {
+body.menu-open,
+body.modal-open {
   overflow: hidden;
 }
 
@@ -623,8 +624,7 @@ svg {
   animation: scan 6s linear infinite;
 }
 
-.terminal-prompt,
-.terminal-comment {
+.terminal-prompt {
   margin: 0;
   font-size: 0.72rem;
 }
@@ -634,51 +634,29 @@ svg {
   color: var(--cyan);
 }
 
-.terminal-comment {
-  margin-top: 0.7rem;
-  color: var(--dim);
-}
-
-.skill-snapshot {
+.stack-overview {
   display: grid;
-  gap: 0.82rem;
-  margin: 1.6rem 0 1.4rem;
+  gap: 0.78rem;
+  margin: 1.4rem 0;
   padding: 0;
   list-style: none;
 }
 
-.skill-snapshot li {
+.stack-overview li {
   display: grid;
-  grid-template-columns: 5.5rem 1fr 1.5rem;
-  align-items: center;
-  gap: 0.7rem;
-  color: var(--muted);
+  grid-template-columns: 6.4rem 1fr;
+  align-items: baseline;
+  gap: 0.85rem;
   font-size: 0.68rem;
+  line-height: 1.5;
 }
 
-.skill-snapshot li > i {
-  height: 3px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.skill-snapshot li > i b {
-  display: block;
-  width: var(--level);
-  height: 100%;
-  background: linear-gradient(90deg, var(--blue), var(--cyan));
-  box-shadow: 0 0 10px var(--cyan);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-.terminal.visible .skill-snapshot li > i b {
-  animation: fillBar 1s var(--delay) ease forwards;
-}
-
-.skill-snapshot strong {
+.stack-overview li span {
   color: var(--cyan);
-  font-size: 0.64rem;
+}
+
+.stack-overview li strong {
+  color: var(--muted);
   font-weight: 500;
 }
 
@@ -928,40 +906,37 @@ svg {
   line-height: 1.85;
 }
 
-.about-chapters blockquote {
+.honors-card {
   position: relative;
-  margin: 0;
-  padding: 2.3rem 2.5rem;
-  overflow: hidden;
+  padding: 2rem 2.2rem;
   border: 1px solid rgba(126, 231, 255, 0.18);
   border-radius: 0.9rem;
   background: linear-gradient(135deg, rgba(126, 231, 255, 0.06), rgba(120, 140, 255, 0.025));
 }
 
-.about-chapters blockquote > span {
-  position: absolute;
-  top: -1.7rem;
-  right: 1rem;
-  color: rgba(126, 231, 255, 0.11);
-  font-family: Georgia, serif;
-  font-size: 10rem;
-}
-
-.about-chapters blockquote p {
-  position: relative;
-  margin: 0;
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.45;
-}
-
-.about-chapters blockquote footer {
-  margin-top: 1.5rem;
-  color: var(--dim);
+.honors-card small {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: var(--cyan);
   font-family: var(--mono);
   font-size: 0.6rem;
   letter-spacing: 0.08em;
+}
+
+.honors-card p {
+  margin: 0;
+  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.55;
+}
+
+.honors-card footer {
+  margin-top: 1.15rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
 }
 
 .skills,
@@ -1186,23 +1161,22 @@ svg {
   transform: translate(3px, -3px);
 }
 
-.project-action-disabled {
+.project-note {
   display: inline-flex;
   align-items: center;
   min-height: 2rem;
-  padding: 0 0.65rem;
-  border: 1px dashed var(--line);
+  padding: 0 0.7rem;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--dim);
+  color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.54rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 0.56rem;
+  letter-spacing: 0.05em;
 }
 
 .project-case-study {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1rem;
   padding: 1.2rem;
@@ -1470,7 +1444,7 @@ svg {
   background-size: 28px 28px, 28px 28px, auto;
 }
 
-.resume-preview::after {
+.resume-preview:not(.ready)::after {
   content: "DRAFT";
   position: absolute;
   top: 50%;
@@ -1480,6 +1454,19 @@ svg {
   font-size: clamp(3rem, 7vw, 5.5rem);
   letter-spacing: 0.15em;
   transform: translate(-50%, -50%) rotate(-28deg);
+}
+
+button.resume-preview.ready {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button.resume-preview.ready:hover {
+  border-color: rgba(126, 231, 255, 0.48);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 24px rgba(126, 231, 255, 0.08);
 }
 
 .resume-preview header,
@@ -1561,6 +1548,15 @@ svg {
   box-shadow: 0 0 12px rgba(255, 189, 118, 0.6);
 }
 
+.resume-status.ready {
+  color: var(--green);
+}
+
+.resume-status.ready i {
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
+
 .resume-facts {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1592,6 +1588,12 @@ svg {
   line-height: 1.5;
 }
 
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .resume-download {
   align-self: flex-start;
 }
@@ -1609,6 +1611,113 @@ svg {
   font-family: var(--mono);
   font-size: 0.55rem;
   line-height: 1.6;
+}
+
+.cv-modal-backdrop {
+  position: fixed;
+  z-index: 500;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 2vw, 2rem);
+  background: rgba(4, 6, 10, 0.84);
+  backdrop-filter: blur(12px);
+}
+
+.cv-modal {
+  width: min(1040px, 100%);
+  height: min(90vh, 920px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 1rem;
+  background: var(--bg-soft);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65), 0 0 36px rgba(126, 231, 255, 0.08);
+}
+
+.cv-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(17, 21, 30, 0.92);
+}
+
+.cv-modal-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.cv-modal-title strong {
+  overflow: hidden;
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cv-modal-badge {
+  flex-shrink: 0;
+  padding: 0.22rem 0.5rem;
+  border: 1px solid rgba(126, 231, 255, 0.35);
+  border-radius: 0.4rem;
+  background: rgba(126, 231, 255, 0.1);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.cv-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.cv-modal-btn {
+  min-height: 2.35rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.72rem;
+}
+
+.cv-modal-close {
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.cv-modal-close:hover {
+  border-color: var(--cyan);
+  color: var(--text);
+  background: rgba(126, 231, 255, 0.08);
+}
+
+.cv-modal-body {
+  flex: 1;
+  min-height: 0;
+  background: #1a1d24;
+}
+
+.cv-modal-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 .process-grid {
@@ -1901,10 +2010,6 @@ svg {
   to { top: 92%; opacity: 0; }
 }
 
-@keyframes fillBar {
-  to { transform: scaleX(1); }
-}
-
 @keyframes blink {
   50% { opacity: 0; }
 }
@@ -2138,9 +2243,9 @@ svg {
     display: none;
   }
 
-  .skill-snapshot li {
-    grid-template-columns: 4.8rem 1fr 1.3rem;
-    gap: 0.45rem;
+  .stack-overview li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 
   .hero-foot span:first-child {
@@ -2165,8 +2270,8 @@ svg {
     gap: 0.6rem;
   }
 
-  .about-chapters blockquote {
-    padding: 1.8rem;
+  .honors-card {
+    padding: 1.5rem;
   }
 
   .skill-grid,
@@ -2222,8 +2327,28 @@ svg {
     min-height: 330px;
   }
 
+  .resume-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .resume-actions .button,
   .resume-download {
     width: 100%;
+  }
+
+  .cv-modal-header {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+  }
+
+  .cv-modal-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .cv-modal-btn {
+    flex: 1;
   }
 
   .contact-inner {
@@ -2279,9 +2404,5 @@ svg {
   .reveal {
     opacity: 1;
     transform: none;
-  }
-
-  .skill-snapshot li > i b {
-    transform: scaleX(1);
   }
 }

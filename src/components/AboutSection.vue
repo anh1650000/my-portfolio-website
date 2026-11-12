@@ -27,13 +27,13 @@ const { t } = useI18n();
           <div class="portrait-grid" aria-hidden="true"></div>
           <div class="portrait-caption">
             <span>PHẠM DUY ANH</span>
-            <small>AI / SOFTWARE / RESEARCH</small>
+            <small>AI · CV · LLM SYSTEMS</small>
           </div>
         </div>
 
         <div class="about-chapters">
           <article class="reveal">
-            <p>// CH. 01 — <span>{{ t("background") }}</span></p>
+            <p>01 — <span>{{ t("background") }}</span></p>
             <h3>{{ t("aboutChapter1Title") }}</h3>
             <div class="chapter-copy">
               <span>01</span>
@@ -41,18 +41,18 @@ const { t } = useI18n();
             </div>
           </article>
           <article class="reveal">
-            <p>// CH. 02 — <span>{{ t("direction") }}</span></p>
+            <p>02 — <span>{{ t("direction") }}</span></p>
             <h3>{{ t("aboutChapter2Title") }}</h3>
             <div class="chapter-copy">
               <span>02</span>
               <p>{{ t("aboutChapter2Body") }}</p>
             </div>
           </article>
-          <blockquote class="reveal">
-            <span>“</span>
-            <p>{{ t("quote") }}</p>
-            <footer>— PHẠM DUY ANH · CẦN THƠ</footer>
-          </blockquote>
+          <div class="honors-card reveal">
+            <small>{{ t("honorsLabel") }}</small>
+            <p>{{ t("honorsTitle") }}</p>
+            <footer>{{ t("honorsFooter") }}</footer>
+          </div>
         </div>
       </div>
     </div>

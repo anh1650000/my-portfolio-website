@@ -23,7 +23,7 @@ const { t } = useI18n();
           <h3>{{ card.titleKey ? t(card.titleKey) : card.title }}</h3>
           <p>{{ t(card.bodyKey) }}</p>
           <ul><li v-for="tag in card.tags" :key="tag">{{ tag }}</li></ul>
-          <footer><span>{{ t("status") }}</span><i></i><b>{{ card.state }}</b></footer>
+          <footer><span>{{ t("focus") }}</span><b>{{ card.state }}</b></footer>
         </article>
       </div>
     </div>

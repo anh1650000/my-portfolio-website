@@ -36,7 +36,7 @@ const { t } = useI18n();
           <h3>{{ certificates[0].provider }} · {{ t(certificates[0].titleKey) }}</h3>
           <p>{{ t(certificates[0].bodyKey) }}</p>
         </div>
-        <span>DETAILS / SOON</span>
+        <span>{{ t("verifiedBadge") }}</span>
       </div>
     </div>
   </section>

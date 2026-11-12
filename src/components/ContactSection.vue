@@ -25,7 +25,7 @@ const channels = computed(() => [
   {
     index: "CH 03",
     type: "GITHUB",
-    value: "@anh1650000",
+    value: profile.githubDisplay,
     description: t("publicCode"),
     href: profile.github,
     external: true,
@@ -91,7 +91,7 @@ onBeforeUnmount(() => window.clearTimeout(resetTimer));
         >
           <span>{{ channel.index }}</span>
           <div>
-            <small>{{ channel.type }} · <i>LIVE</i></small>
+            <small>{{ channel.type }}</small>
             <strong>{{ channel.value }}</strong>
             <p>{{ channel.description }}</p>
           </div>
