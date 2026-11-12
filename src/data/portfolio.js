@@ -107,11 +107,57 @@ export const projects = [
     roleKey: "soloDeveloper",
     tags: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "Docker Compose", "Ollama", "pdfplumber"],
     url: "https://github.com/anh1650000/codoveragsy-project",
+    videoDemoUrl: "",
+    hasDemo: true,
     outcomes: [
       { textKey: "auditOutcome1" },
       { textKey: "auditOutcome2" },
       { textKey: "auditOutcome3" },
     ],
+    flow: {
+      title: "LANGGRAPH · STATEGRAPH",
+      badge: "BOUNDED RETRY",
+      badgeTone: "orange",
+      groups: [
+        {
+          type: "node",
+          step: "01",
+          name: "PARSE",
+          detail: "pdfplumber · text & token offsets",
+        },
+        {
+          type: "retry",
+          label: "↺ retry",
+          nodes: [
+            {
+              step: "02",
+              name: "EXTRACT",
+              detail: "Qwen3.5-ins 4B · structured schema",
+              tone: "accent",
+            },
+            {
+              step: "03",
+              name: "VERIFY",
+              detail: "CitationVerifier · fuzzy & offset check",
+              tone: "verify",
+            },
+          ],
+        },
+        {
+          type: "node",
+          step: "04",
+          name: "RECONCILE",
+          detail: "PostgreSQL · 6 anomaly checks",
+        },
+        {
+          type: "node",
+          step: "05",
+          name: "REPORT",
+          detail: "FastAPI + Streamlit · verified audit",
+          tone: "final",
+        },
+      ],
+    },
     featured: true,
   },
   {
@@ -123,12 +169,54 @@ export const projects = [
     roleKey: "coResearcher",
     tags: ["Python", "PyTorch", "YOLOv8-Seg", "SAHI", "OpenCV", "Extra Trees", "NIG Bayes", "FastAPI", "React 19"],
     url: "",
+    videoDemoUrl: "",
+    hasDemo: true,
     noteKey: "researchTag",
     outcomes: [
       { textKey: "ricaiOutcome1" },
       { textKey: "ricaiOutcome2" },
       { textKey: "ricaiOutcome3" },
     ],
+    flow: {
+      title: "RICAI · CV + BAYES PIPELINE",
+      badge: "TSV2026-129",
+      badgeTone: "cyan",
+      groups: [
+        {
+          type: "node",
+          step: "01",
+          name: "SAHI SLICE",
+          detail: "YOLOv8m (97.56% mAP) · YOLO26s",
+          tone: "accent",
+        },
+        {
+          type: "node",
+          step: "02",
+          name: "GEOMETRY",
+          detail: "OpenCV · 31 shape features (593 samples)",
+        },
+        {
+          type: "node",
+          step: "03",
+          name: "REGRESS",
+          detail: "Extra Trees · R² = 0.9994, MAE 1.79",
+        },
+        {
+          type: "node",
+          step: "04",
+          name: "3σ GATE",
+          detail: "2-branch NIG Bayes · K=0 → K=5 few-shot",
+          tone: "verify",
+        },
+        {
+          type: "node",
+          step: "05",
+          name: "ESTIMATE",
+          detail: "FastAPI + React 19 · 100% CI90 (73 tests)",
+          tone: "final",
+        },
+      ],
+    },
   },
   {
     number: "03",
@@ -139,10 +227,52 @@ export const projects = [
     roleKey: "soloDeveloper",
     tags: ["Python", "FastAPI", "Dual FAISS", "BM25", "RRF", "Ollama (Llama 3.1 8B)", "MySQL"],
     url: "https://github.com/anh1650000/chatbot-ctu-regulations",
+    videoDemoUrl: "",
+    hasDemo: true,
     outcomes: [
       { textKey: "ragOutcome1" },
       { textKey: "ragOutcome2" },
     ],
+    flow: {
+      title: "HYBRID RAG · DUAL FAISS + BM25",
+      badge: "84% ACCURACY",
+      badgeTone: "green",
+      groups: [
+        {
+          type: "node",
+          step: "01",
+          name: "CHUNK",
+          detail: "14 handbooks → ~183 clauses",
+        },
+        {
+          type: "node",
+          step: "02",
+          name: "DUAL INDEX",
+          detail: "vietnamese-bi-encoder (768d) + BM25",
+          tone: "accent",
+        },
+        {
+          type: "node",
+          step: "03",
+          name: "HYBRID RRF",
+          detail: "Accented + raw FAISS · RRF (k=50)",
+          tone: "verify",
+        },
+        {
+          type: "node",
+          step: "04",
+          name: "BUDGET",
+          detail: "Dynamic context · MAX 3,000 tokens",
+        },
+        {
+          type: "node",
+          step: "05",
+          name: "STREAM",
+          detail: "Ollama Llama 3.1 8B · SSE + MySQL",
+          tone: "final",
+        },
+      ],
+    },
   },
   {
     number: "04",
@@ -153,6 +283,7 @@ export const projects = [
     roleKey: "applicationDeveloper",
     tags: ["Java 17", "Swing", "Maven", "MySQL"],
     url: "https://github.com/anh1650000/booking-hotel",
+    videoDemoUrl: "",
   },
   {
     number: "05",
@@ -163,6 +294,7 @@ export const projects = [
     role: "Full-stack Developer",
     tags: ["Vue 3", "Node.js", "Express", "MongoDB", "JWT"],
     url: "https://github.com/anh1650000/CT449_libary-managerment",
+    videoDemoUrl: "",
   },
 ];
 

@@ -1,9 +1,40 @@
 <script setup>
+import { onBeforeUnmount, ref, watch } from "vue";
 import { profile, projects } from "../data/portfolio";
 import { useI18n } from "../composables/useI18n";
 
 const { t } = useI18n();
 const totalProjects = String(projects.length).padStart(2, "0");
+const activeDemoProject = ref(null);
+
+function openDemo(project) {
+  if (!project?.videoDemoUrl) return;
+  activeDemoProject.value = project;
+}
+
+function closeDemo() {
+  activeDemoProject.value = null;
+}
+
+function handleKeydown(event) {
+  if (event.key === "Escape" && activeDemoProject.value) {
+    closeDemo();
+  }
+}
+
+watch(activeDemoProject, (project) => {
+  document.body.classList.toggle("modal-open", Boolean(project));
+  if (project) {
+    window.addEventListener("keydown", handleKeydown);
+  } else {
+    window.removeEventListener("keydown", handleKeydown);
+  }
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", handleKeydown);
+  document.body.classList.remove("modal-open");
+});
 </script>
 
 <template>
@@ -22,7 +53,7 @@ const totalProjects = String(projects.length).padStart(2, "0");
           v-for="project in projects"
           :key="project.title"
           class="project-card reveal"
-          :class="{ featured: project.featured }"
+          :class="{ featured: Boolean(project.flow) }"
         >
           <div class="project-number"><span>{{ project.number }}</span><small>/{{ totalProjects }}</small></div>
           <div class="project-main">
@@ -52,13 +83,67 @@ const totalProjects = String(projects.length).padStart(2, "0");
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
               </a>
               <span v-else-if="project.noteKey" class="project-note">{{ t(project.noteKey) }}</span>
+
+              <button
+                v-if="project.videoDemoUrl"
+                type="button"
+                class="project-demo-btn"
+                @click="openDemo(project)"
+              >
+                <span class="demo-play" aria-hidden="true">▶</span>
+                <span>{{ t("watchDemo") }}</span>
+              </button>
+              <button
+                v-else-if="project.hasDemo"
+                type="button"
+                class="project-demo-btn is-pending"
+                disabled
+                aria-disabled="true"
+                :title="t('demoPendingHint')"
+              >
+                <span class="demo-play" aria-hidden="true">▶</span>
+                <span>{{ t("demoPending") }}</span>
+              </button>
             </div>
           </div>
 
-          <div v-if="project.featured" class="project-visual ai-visual" aria-hidden="true">
-            <div class="nodes"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="query">PARSE → EXTRACT → VERIFY → RECONCILE → REPORT</div>
-            <span>LANGGRAPH.STATEGRAPH</span>
+          <div v-if="project.flow" class="project-visual agent-flow" aria-hidden="true">
+            <header class="flow-head">
+              <span>{{ project.flow.title }}</span>
+              <small :class="`tone-${project.flow.badgeTone || 'cyan'}`">{{ project.flow.badge }}</small>
+            </header>
+
+            <div class="flow-graph">
+              <template v-for="(group, groupIndex) in project.flow.groups" :key="groupIndex">
+                <div v-if="groupIndex > 0" class="flow-connector"><i></i></div>
+
+                <div v-if="group.type === 'retry'" class="flow-retry-zone">
+                  <div class="flow-retry-nodes">
+                    <template v-for="(node, nodeIndex) in group.nodes" :key="node.step">
+                      <div v-if="nodeIndex > 0" class="flow-connector"><i></i></div>
+                      <div class="flow-node" :class="node.tone ? `flow-node-${node.tone}` : ''">
+                        <span class="flow-step">{{ node.step }}</span>
+                        <div class="flow-copy">
+                          <strong>{{ node.name }}</strong>
+                          <small>{{ node.detail }}</small>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                  <div class="flow-retry-rail">
+                    <span>{{ group.label }}</span>
+                  </div>
+                </div>
+
+                <div v-else class="flow-node" :class="group.tone ? `flow-node-${group.tone}` : ''">
+                  <span class="flow-step">{{ group.step }}</span>
+                  <div class="flow-copy">
+                    <strong>{{ group.name }}</strong>
+                    <small>{{ group.detail }}</small>
+                  </div>
+                </div>
+              </template>
+            </div>
           </div>
         </article>
       </div>
@@ -72,5 +157,55 @@ const totalProjects = String(projects.length).padStart(2, "0");
         <span>{{ t("allProjects") }} ↗</span>
       </a>
     </div>
+
+    <Teleport to="body">
+      <div
+        v-if="activeDemoProject"
+        class="cv-modal-backdrop"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="demoModalTitle"
+        @click.self="closeDemo"
+      >
+        <div class="cv-modal demo-modal">
+          <header class="cv-modal-header">
+            <div class="cv-modal-title">
+              <span class="cv-modal-badge">MP4</span>
+              <strong id="demoModalTitle">{{ activeDemoProject.title }}</strong>
+            </div>
+            <div class="cv-modal-actions">
+              <a
+                v-if="activeDemoProject.url"
+                class="button button-ghost cv-modal-btn"
+                :href="activeDemoProject.url"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>{{ t("viewRepository") }}</span><b>↗</b>
+              </a>
+              <button
+                class="cv-modal-close"
+                type="button"
+                :aria-label="t('closeDemoModal')"
+                @click="closeDemo"
+              >
+                ×
+              </button>
+            </div>
+          </header>
+
+          <div class="demo-modal-body">
+            <video
+              :key="activeDemoProject.videoDemoUrl"
+              class="demo-modal-video"
+              :src="activeDemoProject.videoDemoUrl"
+              controls
+              autoplay
+              playsinline
+            ></video>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </section>
 </template>
