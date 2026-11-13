@@ -1270,6 +1270,7 @@ svg {
 }
 
 .demo-modal {
+    width: min(1040px, calc(100vw - 1.5rem));
     height: auto;
     max-height: 90vh;
 }
@@ -1279,13 +1280,18 @@ svg {
     place-items: center;
     background: #050609;
     padding: 0.75rem;
+    width: 100%;
 }
 
 .demo-modal-video {
-    width: 100%;
+    display: block;
+    width: min(100%, 940px);
+    aspect-ratio: 16 / 9;
+    height: auto;
     max-height: calc(90vh - 5.5rem);
     border-radius: 0.5rem;
     background: #000;
+    object-fit: cover;
 }
 
 .project-case-study {
@@ -2666,6 +2672,11 @@ button.resume-preview.ready:hover {
         width: 100%;
     }
 
+    .cv-modal {
+        width: min(100%, calc(100vw - 1rem));
+        max-height: 88vh;
+    }
+
     .cv-modal-header {
         flex-wrap: wrap;
         padding: 0.75rem;
@@ -2678,6 +2689,15 @@ button.resume-preview.ready:hover {
 
     .cv-modal-btn {
         flex: 1;
+    }
+
+    .demo-modal-body {
+        padding: 0.5rem;
+    }
+
+    .demo-modal-video {
+        width: 100%;
+        max-height: 52vh;
     }
 
     .contact-inner {
