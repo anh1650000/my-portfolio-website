@@ -169,7 +169,7 @@ export const projects = [
     roleKey: "coResearcher",
     tags: ["Python", "PyTorch", "YOLOv8-Seg", "SAHI", "OpenCV", "Extra Trees", "NIG Bayes", "FastAPI", "React 19"],
     url: "",
-    videoDemoUrl: "",
+    videoDemoUrl: "https://youtu.be/s4x3dYaX21c",
     hasDemo: true,
     noteKey: "researchTag",
     outcomes: [

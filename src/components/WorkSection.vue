@@ -7,6 +7,44 @@ const { t } = useI18n();
 const totalProjects = String(projects.length).padStart(2, "0");
 const activeDemoProject = ref(null);
 
+function isYouTubeUrl(url) {
+  if (!url) return false;
+
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.hostname.includes("youtube.com") || parsedUrl.hostname.includes("youtu.be");
+  } catch {
+    return false;
+  }
+}
+
+function getVideoEmbedUrl(url) {
+  if (!url) return "";
+
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      const videoId = parsedUrl.pathname.replace("/", "");
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    if (parsedUrl.hostname.includes("youtube.com")) {
+      const videoId = parsedUrl.searchParams.get("v");
+      if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+
+      const embeddedMatch = parsedUrl.pathname.match(/\/embed\/([^/?]+)/);
+      if (embeddedMatch?.[1]) {
+        return `https://www.youtube.com/embed/${embeddedMatch[1]}`;
+      }
+    }
+  } catch {
+    return url;
+  }
+
+  return url;
+}
+
 function openDemo(project) {
   if (!project?.videoDemoUrl) return;
   activeDemoProject.value = project;
@@ -195,7 +233,19 @@ onBeforeUnmount(() => {
           </header>
 
           <div class="demo-modal-body">
+            <iframe
+              v-if="isYouTubeUrl(activeDemoProject.videoDemoUrl)"
+              :key="activeDemoProject.videoDemoUrl"
+              class="demo-modal-video demo-modal-iframe"
+              :src="getVideoEmbedUrl(activeDemoProject.videoDemoUrl)"
+              title="Demo video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
             <video
+              v-else
               :key="activeDemoProject.videoDemoUrl"
               class="demo-modal-video"
               :src="activeDemoProject.videoDemoUrl"
