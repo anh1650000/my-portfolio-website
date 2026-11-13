@@ -2,6 +2,7 @@
 import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import ActivitiesSection from "./components/ActivitiesSection.vue";
 import AboutSection from "./components/AboutSection.vue";
+import ChatWidget from "./components/ChatWidget.vue";
 import ContactSection from "./components/ContactSection.vue";
 import HeroSection from "./components/HeroSection.vue";
 import JourneySection from "./components/JourneySection.vue";
@@ -111,6 +112,7 @@ onBeforeUnmount(() => {
   </main>
 
   <SiteFooter />
+  <ChatWidget />
 
   <button
     class="back-to-top"
