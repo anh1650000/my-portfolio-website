@@ -20,6 +20,7 @@ export const navItems = [
   { id: "skills", labelKey: "navSkills" },
   { id: "work", labelKey: "navWork" },
   { id: "journey", labelKey: "navJourney" },
+  { id: "activities", labelKey: "navActivities" },
   { id: "resume", labelKey: "navResume" },
   { id: "contact", labelKey: "navContact" },
 ];
@@ -36,7 +37,7 @@ export const stackOverview = [
 export const metrics = [
   { index: "01", value: "3.28", suffix: "/4.0", labelKey: "metricGpa" },
   { index: "02", value: "10", suffix: "+", labelKey: "metricProjects" },
-  { index: "03", value: "B1", suffix: "", label: "VSTEP English" },
+  { index: "03", value: "500", suffix: " (R+L)", labelKey: "metricEnglish" },
   { index: "04", value: "2027", suffix: " · EARLY", labelKey: "metricGraduation" },
 ];
 
@@ -227,7 +228,7 @@ export const projects = [
     roleKey: "soloDeveloper",
     tags: ["Python", "FastAPI", "Dual FAISS", "BM25", "RRF", "Ollama (Llama 3.1 8B)", "MySQL"],
     url: "https://github.com/anh1650000/chatbot-ctu-regulations",
-    videoDemoUrl: "",
+    videoDemoUrl: "https://slf0vkta4kdxu9rn.private.blob.vercel-storage.com/chatbot-ctu-regulation-demo.mp4?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfc0xmMFZLVEE0S2R4VTlSbiIsIm93bmVySWQiOiJ0ZWFtX2I5TE10Wm4zc0REbXp6T2dicjVZYmJtQSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzk0NjE0MzMzMzY0LCJpYXQiOjE3OTQ1NzExMzI4NDl9.wmZO35SLqr-_FmgWfkyg9kZvZyUwR9oQef13a1glhqg&vercel-blob-signature=8SeJwZHKdZELX2CYcM2C_QWadZJo0TQ-c-K65fXG9w0",
     hasDemo: true,
     outcomes: [
       { textKey: "ragOutcome1" },
@@ -294,7 +295,7 @@ export const projects = [
     role: "Full-stack Developer",
     tags: ["Vue 3", "Node.js", "Express", "MongoDB", "JWT"],
     url: "https://github.com/anh1650000/CT449_libary-managerment",
-    videoDemoUrl: "",
+    videoDemoUrl: "https://slf0vkta4kdxu9rn.private.blob.vercel-storage.com/library-managerment.mp4?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfc0xmMFZLVEE0S2R4VTlSbiIsIm93bmVySWQiOiJ0ZWFtX2I5TE10Wm4zc0REbXp6T2dicjVZYmJtQSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzk0NjE0NTEyMDc4LCJpYXQiOjE3OTQ1NzEzMTE1NjN9.AcksF3as8yg60USNQSLBVaM6gU4NGY40nZZTo35CJg0&vercel-blob-signature=wRdN4L4-UnEbnBziiOrh-YzVP5dDJVEDkBnINP7AM5U",
   },
 ];
 
@@ -326,6 +327,33 @@ export const journeyItems = [
   },
 ];
 
+export const activityItems = [
+  {
+    number: "01",
+    year: "2024",
+    categoryKey: "activityVolunteerCategory",
+    titleKey: "activityVolunteerTitle",
+    descriptionKey: "activityVolunteerDescription",
+    imageUrl: "",
+  },
+  {
+    number: "02",
+    year: "2024",
+    categoryKey: "activityYouthCategory",
+    titleKey: "activityYouthTitle",
+    descriptionKey: "activityYouthDescription",
+    imageUrl: "",
+  },
+  {
+    number: "03",
+    year: "",
+    categoryKey: "activityClassCategory",
+    titleKey: "activityClassTitle",
+    descriptionKey: "activityClassDescription",
+    imageUrl: "",
+  },
+];
+
 export const processItems = [
   { number: "01", stage: "DISCOVER", titleKey: "process1Title", bodyKey: "process1Body" },
   { number: "02", stage: "DESIGN", titleKey: "process2Title", bodyKey: "process2Body" },
@@ -338,5 +366,12 @@ export const certificates = [
     provider: "Kaggle Learn & CTU",
     titleKey: "kaggleCertificateTitle",
     bodyKey: "kaggleCertificateBody",
+    badgeKey: "verifiedBadge",
+  },
+  {
+    provider: "The University of Tokyo",
+    titleKey: "gciCertificateTitle",
+    bodyKey: "gciCertificateBody",
+    badgeKey: "expectedBadge",
   },
 ];

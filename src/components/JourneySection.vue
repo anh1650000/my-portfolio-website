@@ -29,14 +29,16 @@ const { t } = useI18n();
         </article>
       </div>
 
-      <div class="recognition reveal">
-        <div class="award-symbol">✦</div>
-        <div>
-          <small>{{ t("recognition") }}</small>
-          <h3>{{ certificates[0].provider }} · {{ t(certificates[0].titleKey) }}</h3>
-          <p>{{ t(certificates[0].bodyKey) }}</p>
-        </div>
-        <span>{{ t("verifiedBadge") }}</span>
+      <div class="recognition-list reveal">
+        <article v-for="item in certificates" :key="item.titleKey" class="recognition">
+          <div class="award-symbol">✦</div>
+          <div>
+            <small>{{ t("recognition") }}</small>
+            <h3>{{ item.provider }} · {{ t(item.titleKey) }}</h3>
+            <p>{{ t(item.bodyKey) }}</p>
+          </div>
+          <span>{{ t(item.badgeKey) }}</span>
+        </article>
       </div>
     </div>
   </section>
