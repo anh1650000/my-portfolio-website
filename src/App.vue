@@ -7,7 +7,9 @@ import ContactSection from "./components/ContactSection.vue";
 import HeroSection from "./components/HeroSection.vue";
 import JourneySection from "./components/JourneySection.vue";
 import MetricsStrip from "./components/MetricsStrip.vue";
+import PersonalSection from "./components/PersonalSection.vue";
 import ProcessSection from "./components/ProcessSection.vue";
+import QuotesSection from "./components/QuotesSection.vue";
 import ResumeSection from "./components/ResumeSection.vue";
 import SiteFooter from "./components/SiteFooter.vue";
 import SiteHeader from "./components/SiteHeader.vue";
@@ -22,12 +24,41 @@ const cursorGlow = ref(null);
 
 let revealObserver;
 let sectionObserver;
+let parallaxFrame;
 
 function updateScrollUi() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   scrollRatio.value = scrollable > 0 ? window.scrollY / scrollable : 0;
   scrolled.value = window.scrollY > 16;
   showBackToTop.value = window.scrollY > window.innerHeight * 0.7;
+  updateActiveSection();
+  if (!parallaxFrame) {
+    parallaxFrame = window.requestAnimationFrame(updateParallax);
+  }
+}
+
+function updateActiveSection() {
+  const sections = document.querySelectorAll("main section[id]");
+  if (!sections.length) return;
+
+  const marker = window.scrollY + window.innerHeight * 0.28;
+  let currentSection = "home";
+
+  sections.forEach((section) => {
+    if (section.offsetTop <= marker) {
+      currentSection = section.id;
+    }
+  });
+
+  activeSection.value = currentSection;
+}
+
+function updateParallax() {
+  parallaxFrame = null;
+  document.querySelectorAll("[data-parallax]").forEach((element) => {
+    const depth = Number(element.dataset.parallax) || 0;
+    element.style.setProperty("--parallax-y", `${window.scrollY * depth}px`);
+  });
 }
 
 function backToTop() {
@@ -45,11 +76,31 @@ function handlePointerLeave() {
   if (cursorGlow.value) cursorGlow.value.style.opacity = "0";
 }
 
+function handleTiltMove(event) {
+  const card = event.target.closest(".tilt-card");
+  if (!card) return;
+  const bounds = card.getBoundingClientRect();
+  const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+  const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+  card.style.setProperty("--tilt-x", `${x * 5}deg`);
+  card.style.setProperty("--tilt-y", `${y * -5}deg`);
+}
+
+function resetTilt(event) {
+  const card = event.target.closest(".tilt-card");
+  if (!card) return;
+  card.style.setProperty("--tilt-x", "0deg");
+  card.style.setProperty("--tilt-y", "0deg");
+}
+
 onMounted(async () => {
   updateScrollUi();
   window.addEventListener("scroll", updateScrollUi, { passive: true });
+  window.addEventListener("pointermove", handleTiltMove);
+  document.addEventListener("pointerleave", resetTilt, true);
 
   await nextTick();
+  updateActiveSection();
 
   revealObserver = new IntersectionObserver(
     (entries) => {
@@ -70,7 +121,7 @@ onMounted(async () => {
       const visible = entries
         .filter((entry) => entry.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) activeSection.value = visible.target.id;
+      if (visible) updateActiveSection();
     },
     { threshold: [0.2, 0.45, 0.7], rootMargin: "-20% 0px -55%" },
   );
@@ -86,7 +137,10 @@ onMounted(async () => {
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", updateScrollUi);
   window.removeEventListener("pointermove", handlePointerMove);
+  window.removeEventListener("pointermove", handleTiltMove);
+  document.removeEventListener("pointerleave", resetTilt, true);
   document.documentElement.removeEventListener("mouseleave", handlePointerLeave);
+  if (parallaxFrame) window.cancelAnimationFrame(parallaxFrame);
   revealObserver?.disconnect();
   sectionObserver?.disconnect();
 });
@@ -94,7 +148,9 @@ onBeforeUnmount(() => {
 
 <template>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="scroll-progress" aria-hidden="true"><span :style="{ transform: `scaleX(${scrollRatio})` }"></span></div>
+  <div class="scroll-progress" aria-hidden="true">
+    <span :style="{ transform: `scaleX(${scrollRatio})` }"><i></i></span>
+  </div>
 
   <SiteHeader :scrolled="scrolled" :active-section="activeSection" />
 
@@ -106,6 +162,8 @@ onBeforeUnmount(() => {
     <WorkSection />
     <JourneySection />
     <ActivitiesSection />
+    <PersonalSection />
+    <QuotesSection />
     <ResumeSection />
     <ProcessSection />
     <ContactSection />

@@ -12,7 +12,9 @@ export const profile = {
   githubDisplay: "github.com/anh1650000",
   linkedin: "https://www.linkedin.com/in/duy-anh-ph%E1%BA%A1m-35ba53291/",
   instagram: "https://www.instagram.com/phm.danhh__/",
-  facebook: "https://www.facebook.com/duyanhpham.165.000",
+  facebook: "https://www.facebook.com/phmdanh1650/",
+  zaloDisplay: "+84 834 573 195",
+  zaloHref: "tel:+84834573195",
 };
 
 export const navItems = [
@@ -21,6 +23,8 @@ export const navItems = [
   { id: "work", labelKey: "navWork" },
   { id: "journey", labelKey: "navJourney" },
   { id: "activities", labelKey: "navActivities" },
+  { id: "life", labelKey: "navLife" },
+  { id: "quotes", labelKey: "navQuotes" },
   { id: "resume", labelKey: "navResume" },
   { id: "contact", labelKey: "navContact" },
 ];
@@ -228,7 +232,7 @@ export const projects = [
     roleKey: "soloDeveloper",
     tags: ["Python", "FastAPI", "Dual FAISS", "BM25", "RRF", "Ollama (Llama 3.1 8B)", "MySQL"],
     url: "https://github.com/anh1650000/chatbot-ctu-regulations",
-    videoDemoUrl: "https://slf0vkta4kdxu9rn.private.blob.vercel-storage.com/chatbot-ctu-regulation-demo.mp4?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfc0xmMFZLVEE0S2R4VTlSbiIsIm93bmVySWQiOiJ0ZWFtX2I5TE10Wm4zc0REbXp6T2dicjVZYmJtQSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzk0NjE0MzMzMzY0LCJpYXQiOjE3OTQ1NzExMzI4NDl9.wmZO35SLqr-_FmgWfkyg9kZvZyUwR9oQef13a1glhqg&vercel-blob-signature=8SeJwZHKdZELX2CYcM2C_QWadZJo0TQ-c-K65fXG9w0",
+    videoDemoUrl: "https://mtuajpgurlthfwos.public.blob.vercel-storage.com/chatbot-ctu-regulation-demo.mp4",
     hasDemo: true,
     outcomes: [
       { textKey: "ragOutcome1" },
@@ -295,27 +299,19 @@ export const projects = [
     role: "Full-stack Developer",
     tags: ["Vue 3", "Node.js", "Express", "MongoDB", "JWT"],
     url: "https://github.com/anh1650000/CT449_libary-managerment",
-    videoDemoUrl: "https://slf0vkta4kdxu9rn.private.blob.vercel-storage.com/library-managerment.mp4?vercel-blob-delegation=eyJzdG9yZUlkIjoic3RvcmVfc0xmMFZLVEE0S2R4VTlSbiIsIm93bmVySWQiOiJ0ZWFtX2I5TE10Wm4zc0REbXp6T2dicjVZYmJtQSIsInBhdGhuYW1lIjoiKiIsIm9wZXJhdGlvbnMiOlsiZ2V0IiwiaGVhZCJdLCJ2YWxpZFVudGlsIjoxNzk0NjE0NTEyMDc4LCJpYXQiOjE3OTQ1NzEzMTE1NjN9.AcksF3as8yg60USNQSLBVaM6gU4NGY40nZZTo35CJg0&vercel-blob-signature=wRdN4L4-UnEbnBziiOrh-YzVP5dDJVEDkBnINP7AM5U",
+    videoDemoUrl: "https://mtuajpgurlthfwos.public.blob.vercel-storage.com/library-managerment.mp4",
   },
 ];
 
 export const journeyItems = [
   {
-    number: "01",
-    phase: "EDUCATION · 01 / 03",
-    date: "2023 — 2027",
-    titleKey: "universityTitle",
-    bodyKey: "universityBody",
-    tags: ["GPA 3.28/4.0", "Image Processing 9.7", "Applied ML 9.5", "Principles of ML 9.5", "OOP 9.1"],
-  },
-  {
     number: "02",
-    phase: "RESEARCH & BUILD · 02 / 03",
+    phase: "RESEARCH & ENGINEERING · 02 / 03",
     date: "2025 —",
     dateKey: "present",
     titleKey: "independentTitle",
     bodyKey: "independentBody",
-    tags: ["TSV2026-129", "LangGraph Agents", "Hybrid RAG", "Docker Compose"],
+    tags: ["TSV2026-129 approved", "First agent architecture", "Docker delivery"],
   },
   {
     number: "03",
@@ -323,7 +319,15 @@ export const journeyItems = [
     date: "2024",
     titleKey: "leadershipTitle",
     bodyKey: "leadershipBody",
-    tags: ["Decision 116-QĐ/ĐTN", "Team Coordination", "CICT Youth Union"],
+    tags: ["Decision 116-QĐ/ĐTN", "Class Monitor", "Team Coordination", "CICT Youth Union"],
+  },
+  {
+    number: "01",
+    phase: "EDUCATION · 01 / 03",
+    date: "2023 — 2027",
+    titleKey: "universityTitle",
+    bodyKey: "universityBody",
+    tags: ["GPA 3.28/4.0", "Image Processing 9.7", "Applied ML 9.5", "Principles of ML 9.5", "OOP 9.1"],
   },
 ];
 
@@ -354,6 +358,36 @@ export const activityItems = [
   },
 ];
 
+export const personalItems = [
+  {
+    number: "01",
+    icon: "01",
+    titleKey: "personalGamingTitle",
+    bodyKey: "personalGamingBody",
+    noteKey: "personalGamingNote",
+  },
+  {
+    number: "02",
+    icon: "02",
+    titleKey: "personalSportTitle",
+    bodyKey: "personalSportBody",
+    noteKey: "personalSportNote",
+  },
+  {
+    number: "03",
+    icon: "03",
+    titleKey: "personalGymTitle",
+    bodyKey: "personalGymBody",
+    noteKey: "personalGymNote",
+  },
+];
+
+export const quoteItems = [
+  { number: "01", quoteKey: "quoteOne", authorKey: "quoteAuthor" },
+  { number: "02", quoteKey: "quoteTwo", authorKey: "quoteAuthor" },
+  { number: "03", quoteKey: "quoteThree", authorKey: "quoteAuthor" },
+];
+
 export const processItems = [
   { number: "01", stage: "DISCOVER", titleKey: "process1Title", bodyKey: "process1Body" },
   { number: "02", stage: "DESIGN", titleKey: "process2Title", bodyKey: "process2Body" },
@@ -372,6 +406,6 @@ export const certificates = [
     provider: "The University of Tokyo",
     titleKey: "gciCertificateTitle",
     bodyKey: "gciCertificateBody",
-    badgeKey: "expectedBadge",
+    badgeKey: "inProgressBadge",
   },
 ];

@@ -32,6 +32,21 @@ const channels = computed(() => [
   },
   {
     index: "CH 04",
+    type: "FACEBOOK",
+    value: "facebook.com/phmdanh1650",
+    description: t("socialProfile"),
+    href: profile.facebook,
+    external: true,
+  },
+  {
+    index: "CH 05",
+    type: "ZALO",
+    value: profile.zaloDisplay,
+    description: t("directMessenger"),
+    href: profile.zaloHref,
+  },
+  {
+    index: "CH 06",
     type: "LINKEDIN",
     value: profile.name,
     description: t("professionalProfile"),

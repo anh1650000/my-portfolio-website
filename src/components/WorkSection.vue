@@ -153,13 +153,29 @@ onBeforeUnmount(() => {
 
             <div class="flow-graph">
               <template v-for="(group, groupIndex) in project.flow.groups" :key="groupIndex">
-                <div v-if="groupIndex > 0" class="flow-connector"><i></i></div>
+                <div
+                  v-if="groupIndex > 0"
+                  class="flow-connector"
+                  :style="{ '--flow-index': groupIndex }"
+                >
+                  <i></i>
+                </div>
 
                 <div v-if="group.type === 'retry'" class="flow-retry-zone">
                   <div class="flow-retry-nodes">
                     <template v-for="(node, nodeIndex) in group.nodes" :key="node.step">
-                      <div v-if="nodeIndex > 0" class="flow-connector"><i></i></div>
-                      <div class="flow-node" :class="node.tone ? `flow-node-${node.tone}` : ''">
+                      <div
+                        v-if="nodeIndex > 0"
+                        class="flow-connector"
+                        :style="{ '--flow-index': groupIndex + nodeIndex }"
+                      >
+                        <i></i>
+                      </div>
+                      <div
+                        class="flow-node"
+                        :class="node.tone ? `flow-node-${node.tone}` : ''"
+                        :style="{ '--flow-index': groupIndex + nodeIndex + 1 }"
+                      >
                         <span class="flow-step">{{ node.step }}</span>
                         <div class="flow-copy">
                           <strong>{{ node.name }}</strong>
@@ -173,7 +189,12 @@ onBeforeUnmount(() => {
                   </div>
                 </div>
 
-                <div v-else class="flow-node" :class="group.tone ? `flow-node-${group.tone}` : ''">
+                <div
+                  v-else
+                  class="flow-node"
+                  :class="group.tone ? `flow-node-${group.tone}` : ''"
+                  :style="{ '--flow-index': groupIndex + 1 }"
+                >
                   <span class="flow-step">{{ group.step }}</span>
                   <div class="flow-copy">
                     <strong>{{ group.name }}</strong>

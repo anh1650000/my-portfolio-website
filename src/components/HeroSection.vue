@@ -7,8 +7,8 @@ const { t } = useI18n();
 
 <template>
   <section id="home" class="hero section-grid" aria-labelledby="heroTitle">
-    <div class="hero-mesh" aria-hidden="true"></div>
-    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-mesh parallax-layer" data-parallax="-0.035" aria-hidden="true"></div>
+    <div class="hero-grid-bg parallax-layer" data-parallax="0.018" aria-hidden="true"></div>
     <div class="shell hero-inner">
       <div class="top-meta reveal">
         <div class="meta-sequence">
