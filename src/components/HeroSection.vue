@@ -57,7 +57,7 @@ const { t } = useI18n();
                 <strong>{{ item.tools }}</strong>
               </li>
             </ul>
-            <div class="terminal-footer"><span>focus: <b>AI · CV · LLM Systems</b></span><i>▮</i></div>
+            <div class="terminal-footer"><span>focus: <b>AI · Computer Vision · LLM Systems</b></span><i>▮</i></div>
           </div>
         </aside>
       </div>

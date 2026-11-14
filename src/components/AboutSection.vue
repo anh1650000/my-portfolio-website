@@ -27,7 +27,7 @@ const { t } = useI18n();
           <div class="portrait-grid" aria-hidden="true"></div>
           <div class="portrait-caption">
             <span>PHẠM DUY ANH</span>
-            <small>AI · CV · LLM SYSTEMS</small>
+            <small>AI · COMPUTER VISION · LLM SYSTEMS</small>
           </div>
         </div>
 

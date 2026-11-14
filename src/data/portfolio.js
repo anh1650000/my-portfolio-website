@@ -41,7 +41,7 @@ export const stackOverview = [
 export const metrics = [
   { index: "01", value: "3.28", suffix: "/4.0", labelKey: "metricGpa" },
   { index: "02", value: "10", suffix: "+", labelKey: "metricProjects" },
-  { index: "03", value: "500", suffix: " (R+L)", labelKey: "metricEnglish" },
+  { index: "03", value: "Dec", suffix: " 2026", labelKey: "metricAvailability" },
   { index: "04", value: "2027", suffix: " · EARLY", labelKey: "metricGraduation" },
 ];
 
@@ -183,7 +183,7 @@ export const projects = [
       { textKey: "ricaiOutcome3" },
     ],
     flow: {
-      title: "RICAI · CV + BAYES PIPELINE",
+      title: "RICAI · COMPUTER VISION + BAYES PIPELINE",
       badge: "TSV2026-129",
       badgeTone: "cyan",
       groups: [
