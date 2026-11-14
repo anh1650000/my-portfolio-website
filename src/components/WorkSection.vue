@@ -106,6 +106,10 @@ onBeforeUnmount(() => {
               </div>
             </div>
 
+            <p v-if="project.challengeKey" class="project-challenge">
+              <strong>{{ t("challenge") }}:</strong> {{ t(project.challengeKey) }}
+            </p>
+
             <div v-if="project.outcomes?.length" class="project-case-study">
               <div>
                 <small>{{ t("projectOutcomes") }}</small>

@@ -19,8 +19,9 @@ export const profile = {
 
 export const navItems = [
   { id: "about", labelKey: "navAbout" },
-  { id: "skills", labelKey: "navSkills" },
   { id: "work", labelKey: "navWork" },
+  { id: "resume", labelKey: "navResume" },
+  { id: "skills", labelKey: "navSkills" },
   { id: "journey", labelKey: "navJourney" },
   { id: "activities", labelKey: "navActivities" },
   { id: "life", labelKey: "navLife" },
@@ -110,6 +111,7 @@ export const projects = [
     title: "Autonomous Contract Auditing & Verification Agent",
     descriptionKey: "projectAudit",
     roleKey: "soloDeveloper",
+    challengeKey: "auditChallenge",
     tags: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "Docker Compose", "Ollama", "pdfplumber"],
     url: "https://github.com/anh1650000/codoveragsy-project",
     videoDemoUrl: "",
@@ -166,12 +168,13 @@ export const projects = [
     featured: true,
   },
   {
-    number: "02",
+    number: "03",
     metaKey: "metaResearch",
     year: "Mar – Nov 2026",
     title: "RICAI: Intelligent Rice Grain Estimation & Analysis",
     descriptionKey: "projectRicai",
     roleKey: "coResearcher",
+    challengeKey: "ricaiChallenge",
     tags: ["Python", "PyTorch", "YOLOv8-Seg", "SAHI", "OpenCV", "Extra Trees", "NIG Bayes", "FastAPI", "React 19"],
     url: "",
     videoDemoUrl: "https://youtu.be/s4x3dYaX21c",
@@ -224,12 +227,13 @@ export const projects = [
     },
   },
   {
-    number: "03",
+    number: "02",
     metaKey: "metaRag",
     year: "May – Oct 2026",
     title: "CTU Regulations Q&A Assistant (RAG)",
     descriptionKey: "projectChatbot",
     roleKey: "soloDeveloper",
+    challengeKey: "ragChallenge",
     tags: ["Python", "FastAPI", "Dual FAISS", "BM25", "RRF", "Ollama (Llama 3.1 8B)", "MySQL"],
     url: "https://github.com/anh1650000/chatbot-ctu-regulations",
     videoDemoUrl: "https://mtuajpgurlthfwos.public.blob.vercel-storage.com/chatbot-ctu-regulation-demo.mp4",
@@ -289,6 +293,10 @@ export const projects = [
     tags: ["Java 17", "Swing", "Maven", "MySQL"],
     url: "https://github.com/anh1650000/booking-hotel",
     videoDemoUrl: "",
+    challengeKey: "hotelChallenge",
+    outcomes: [
+      { textKey: "hotelOutcome1" },
+    ],
   },
   {
     number: "05",
@@ -297,6 +305,10 @@ export const projects = [
     title: "Library & Contact Management Systems",
     descriptionKey: "projectLibrary",
     role: "Full-stack Developer",
+    challengeKey: "libraryChallenge",
+    outcomes: [
+      { textKey: "libraryOutcome1" },
+    ],
     tags: ["Vue 3", "Node.js", "Express", "MongoDB", "JWT"],
     url: "https://github.com/anh1650000/CT449_libary-managerment",
     videoDemoUrl: "https://mtuajpgurlthfwos.public.blob.vercel-storage.com/library-managerment.mp4",
@@ -305,17 +317,17 @@ export const projects = [
 
 export const journeyItems = [
   {
-    number: "02",
-    phase: "RESEARCH & ENGINEERING · 02 / 03",
+    number: "03",
+    phase: "RESEARCH & ENGINEERING",
     date: "2025 —",
     dateKey: "present",
     titleKey: "independentTitle",
     bodyKey: "independentBody",
-    tags: ["TSV2026-129 approved", "First agent architecture", "Docker delivery"],
+    tags: ["TSV2026-129 approved", "First end-to-end LangGraph workflow", "Docker delivery"],
   },
   {
-    number: "03",
-    phase: "LEADERSHIP · 03 / 03",
+    number: "02",
+    phase: "LEADERSHIP",
     date: "2024",
     titleKey: "leadershipTitle",
     bodyKey: "leadershipBody",
@@ -323,7 +335,7 @@ export const journeyItems = [
   },
   {
     number: "01",
-    phase: "EDUCATION · 01 / 03",
+    phase: "EDUCATION",
     date: "2023 — 2027",
     titleKey: "universityTitle",
     bodyKey: "universityBody",
@@ -334,27 +346,21 @@ export const journeyItems = [
 export const activityItems = [
   {
     number: "01",
-    year: "2024",
-    categoryKey: "activityVolunteerCategory",
-    titleKey: "activityVolunteerTitle",
-    descriptionKey: "activityVolunteerDescription",
+    year: "2024 —",
+    categoryKey: "activityTravelCategory",
+    titleKey: "activityTravelTitle",
+    descriptionKey: "activityTravelDescription",
     imageUrl: "",
+    images: [],
   },
   {
     number: "02",
-    year: "2024",
-    categoryKey: "activityYouthCategory",
-    titleKey: "activityYouthTitle",
-    descriptionKey: "activityYouthDescription",
-    imageUrl: "",
-  },
-  {
-    number: "03",
-    year: "",
+    year: "2023 —",
     categoryKey: "activityClassCategory",
     titleKey: "activityClassTitle",
     descriptionKey: "activityClassDescription",
     imageUrl: "",
+    images: [],
   },
 ];
 
@@ -397,9 +403,15 @@ export const processItems = [
 
 export const certificates = [
   {
-    provider: "Kaggle Learn & CTU",
+    provider: "Kaggle Learn",
     titleKey: "kaggleCertificateTitle",
     bodyKey: "kaggleCertificateBody",
+    badgeKey: "verifiedBadge",
+  },
+  {
+    provider: "Can Tho University Youth Union",
+    titleKey: "ctuCertificateTitle",
+    bodyKey: "ctuCertificateBody",
     badgeKey: "verifiedBadge",
   },
   {

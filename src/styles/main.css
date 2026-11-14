@@ -109,6 +109,13 @@ svg {
 }
 
 .scroll-progress span {
+    appearance: none;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
     position: relative;
     display: block;
     width: 100%;
@@ -231,18 +238,24 @@ svg {
     place-items: center;
     width: 2.35rem;
     height: 2.35rem;
-    border: 1px solid rgba(126, 231, 255, 0.48);
+    overflow: hidden;
+    border: 0;
     border-radius: 0.6rem;
-    background: linear-gradient(
-        145deg,
-        rgba(126, 231, 255, 0.15),
-        rgba(120, 140, 255, 0.08)
-    );
-    box-shadow: inset 0 0 18px rgba(126, 231, 255, 0.08);
+    background: transparent;
     color: var(--cyan);
     font-family: var(--mono);
     font-size: 0.72rem;
     font-weight: 600;
+}
+
+.brand-mark-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center bottom;
+    transform: none;
 }
 
 .brand-copy {
@@ -1199,15 +1212,24 @@ svg {
 
 .activity-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 1.15rem;
 }
 
 .activity-card {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 0.9rem;
     background: linear-gradient(145deg, rgba(17, 21, 30, 0.9), rgba(11, 13, 18, 0.96));
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
     transition:
         border-color 0.25s ease,
         transform 0.25s ease,
@@ -1218,6 +1240,159 @@ svg {
     transform: translateY(-4px);
     border-color: rgba(126, 231, 255, 0.36);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+.activity-card:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 0.35rem;
+}
+
+.activity-modal {
+    width: min(980px, 100%);
+    height: min(88vh, 880px);
+}
+
+.activity-modal-year {
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+}
+
+.activity-modal-count {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    padding-right: 0.4rem;
+}
+
+.activity-modal-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: clamp(1.2rem, 3vw, 2.2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #0d1017;
+}
+
+.activity-modal-intro {
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.activity-modal-category {
+    display: inline-block;
+    color: var(--cyan) !important;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.45rem;
+}
+
+.activity-modal-description {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+.activity-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+}
+
+.activity-gallery-item {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: rgba(17, 21, 30, 0.6);
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.activity-gallery-item:hover {
+    border-color: rgba(126, 231, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.activity-gallery-photo {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #080a0f;
+}
+
+.activity-gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.activity-gallery-item:hover .activity-gallery-photo img {
+    transform: scale(1.05);
+}
+
+.activity-gallery-caption {
+    padding: 0.75rem 0.95rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.activity-modal-empty {
+    padding: clamp(3rem, 7vw, 5rem) 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px dashed var(--line-strong);
+    border-radius: 0.85rem;
+    background: rgba(17, 21, 30, 0.35);
+}
+
+.activity-modal-empty-badge {
+    display: grid;
+    place-items: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(126, 231, 255, 0.4);
+    border-radius: 50%;
+    background: rgba(126, 231, 255, 0.08);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 0 24px rgba(126, 231, 255, 0.12);
+}
+
+.activity-modal-empty-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.activity-modal-empty-text {
+    margin: 0;
+    max-width: 440px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.65;
 }
 
 .activity-photo {
@@ -1321,6 +1496,9 @@ svg {
 }
 
 .activity-copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     padding: 1.2rem 1.25rem 1.35rem;
 }
 
@@ -1344,6 +1522,31 @@ svg {
     color: var(--muted);
     font-size: 0.75rem;
     line-height: 1.7;
+}
+
+.activity-footer {
+    margin-top: auto;
+    padding-top: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.activity-view-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.activity-card:hover .activity-view-hint {
+    opacity: 1;
+    transform: translateX(3px);
 }
 
 .personal-life {
@@ -1838,6 +2041,22 @@ svg {
     border: 1px dashed var(--line);
     border-radius: 0.65rem;
     background: rgba(255, 255, 255, 0.012);
+}
+
+.project-challenge {
+    margin: 1rem 0 0;
+    padding-left: 0.9rem;
+    border-left: 2px solid rgba(126, 231, 255, 0.35);
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.7;
+}
+
+.project-challenge strong {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
 }
 
 .project-case-study > div {
@@ -3935,6 +4154,10 @@ button.resume-preview.ready:hover {
 
     .demo-modal-body {
         padding: 0.5rem;
+    }
+
+    .activity-gallery-grid {
+        grid-template-columns: 1fr;
     }
 
     .demo-modal-video {

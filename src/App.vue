@@ -158,13 +158,13 @@ onBeforeUnmount(() => {
     <HeroSection />
     <MetricsStrip />
     <AboutSection />
-    <SkillsSection />
     <WorkSection />
+    <ResumeSection />
+    <SkillsSection />
     <JourneySection />
     <ActivitiesSection />
     <PersonalSection />
     <QuotesSection />
-    <ResumeSection />
     <ProcessSection />
     <ContactSection />
   </main>

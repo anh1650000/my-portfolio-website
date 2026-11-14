@@ -37,7 +37,9 @@ onBeforeUnmount(() => {
     <div class="header-blur" aria-hidden="true"></div>
     <div class="header-inner shell">
       <a class="brand" href="#home" aria-label="Phạm Duy Anh — Home" @click="closeMenu">
-        <span class="brand-mark" aria-hidden="true">DA</span>
+        <span class="brand-mark" aria-hidden="true">
+          <img class="brand-mark-image" src="/brand/profile.jpg" alt="" />
+        </span>
         <span class="brand-copy">
           <strong>PHM.DANH</strong>
           <small>{{ t("brandTag") }}</small>
