@@ -26,7 +26,6 @@ export const navItems = [
   { id: "activities", labelKey: "navActivities" },
   { id: "life", labelKey: "navLife" },
   { id: "quotes", labelKey: "navQuotes" },
-  { id: "resume", labelKey: "navResume" },
   { id: "contact", labelKey: "navContact" },
 ];
 
@@ -123,7 +122,7 @@ export const projects = [
     ],
     flow: {
       title: "LANGGRAPH · STATEGRAPH",
-      badge: "BOUNDED RETRY",
+      badge: "IN PROGRESS",
       badgeTone: "orange",
       groups: [
         {
@@ -168,7 +167,7 @@ export const projects = [
     featured: true,
   },
   {
-    number: "03",
+    number: "02",
     metaKey: "metaResearch",
     year: "Mar – Nov 2026",
     title: "RICAI: Intelligent Rice Grain Estimation & Analysis",
@@ -227,7 +226,7 @@ export const projects = [
     },
   },
   {
-    number: "02",
+    number: "03",
     metaKey: "metaRag",
     year: "May – Oct 2026",
     title: "CTU Regulations Q&A Assistant (RAG)",
@@ -389,9 +388,27 @@ export const personalItems = [
 ];
 
 export const quoteItems = [
-  { number: "01", quoteKey: "quoteOne", authorKey: "quoteAuthor" },
-  { number: "02", quoteKey: "quoteTwo", authorKey: "quoteAuthor" },
-  { number: "03", quoteKey: "quoteThree", authorKey: "quoteAuthor" },
+  {
+    number: "01",
+    tagKey: "quoteTagOne",
+    quoteKey: "quoteOne",
+    contextKey: "quoteContextOne",
+    authorKey: "quoteAuthor",
+  },
+  {
+    number: "02",
+    tagKey: "quoteTagTwo",
+    quoteKey: "quoteTwo",
+    contextKey: "quoteContextTwo",
+    authorKey: "quoteAuthor",
+  },
+  {
+    number: "03",
+    tagKey: "quoteTagThree",
+    quoteKey: "quoteThree",
+    contextKey: "quoteContextThree",
+    authorKey: "quoteAuthor",
+  },
 ];
 
 export const processItems = [

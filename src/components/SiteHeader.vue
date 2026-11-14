@@ -61,10 +61,6 @@ onBeforeUnmount(() => {
         <button class="language-toggle" type="button" aria-label="Switch language" @click="toggleLanguage">
           <span>{{ language.toUpperCase() }}</span><span class="muted">/{{ nextLanguage.toUpperCase() }}</span>
         </button>
-        <a class="header-cta" href="/cv/pham-duy-anh-cv.pdf" target="_blank" rel="noreferrer">
-          <span>{{ t("startConversation") }}</span>
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M5 5h6v6" /></svg>
-        </a>
         <button
           class="menu-toggle"
           type="button"

@@ -63,22 +63,37 @@ onBeforeUnmount(() => {
           :aria-label="t('viewCv')"
           @click="openModal"
         >
-          <header><span>PHẠM DUY ANH</span><small>CV / 2026</small></header>
-          <div class="resume-preview-title">AI<br />ENGINEER</div>
-          <div class="resume-preview-lines"><i></i><i></i><i></i><i></i></div>
-          <footer><span>PDF</span><span>01 PAGE</span></footer>
+          <header><span>PHẠM DUY ANH</span><small>{{ t("resumeDocType") }}</small></header>
+          <div class="resume-preview-body">
+            <div class="resume-preview-title">AI<br /><span>ENGINEER</span></div>
+            <p class="resume-preview-sub">CTU · COMPUTER SCIENCE · 2023–2027</p>
+            <div class="resume-preview-highlights">
+              <span>✦ GPA 3.28 / 4.0 · Top Track</span>
+              <span>✦ Research Lead · RICAI (TSV2026-129)</span>
+              <span>✦ Agentic RAG · LangGraph StateGraph</span>
+            </div>
+          </div>
+          <footer><span>PDF DOCUMENT</span><span>{{ t("resumeBadge") }}</span></footer>
         </button>
         <div v-else class="resume-preview" aria-hidden="true">
-          <header><span>PHẠM DUY ANH</span><small>CV / 2026</small></header>
-          <div class="resume-preview-title">AI<br />ENGINEER</div>
-          <div class="resume-preview-lines"><i></i><i></i><i></i><i></i></div>
-          <footer><span>PDF</span><span>01 PAGE</span></footer>
+          <header><span>PHẠM DUY ANH</span><small>{{ t("resumeDocType") }}</small></header>
+          <div class="resume-preview-body">
+            <div class="resume-preview-title">AI<br /><span>ENGINEER</span></div>
+            <p class="resume-preview-sub">CTU · COMPUTER SCIENCE · 2023–2027</p>
+            <div class="resume-preview-highlights">
+              <span>✦ GPA 3.28 / 4.0 · Top Track</span>
+              <span>✦ Research Lead · RICAI (TSV2026-129)</span>
+              <span>✦ Agentic RAG · LangGraph StateGraph</span>
+            </div>
+          </div>
+          <footer><span>PDF DOCUMENT</span><span>{{ t("resumeBadge") }}</span></footer>
         </div>
 
         <div class="resume-content">
           <div class="resume-status" :class="{ ready: hasResume }">
             <i></i><span>{{ hasResume ? t("resumeStatusReady") : t("resumeStatus") }}</span>
           </div>
+          <p class="resume-lead">{{ t("resumeLeadText") }}</p>
           <div class="resume-facts">
             <article v-for="fact in resumeFacts" :key="fact.label">
               <small>{{ fact.label }}</small><strong>{{ fact.value }}</strong>
