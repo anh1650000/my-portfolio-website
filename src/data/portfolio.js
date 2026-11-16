@@ -10,7 +10,7 @@ export const profile = {
   resumeUrl: "/cv/pham-duy-anh-cv.pdf",
   github: "https://github.com/anh1650000",
   githubDisplay: "github.com/anh1650000",
-  linkedin: "https://www.linkedin.com/in/duy-anh-ph%E1%BA%A1m-35ba53291/",
+  linkedin: "https://www.linkedin.com/in/duy-anh-pham-35ba53291/",
   instagram: "https://www.instagram.com/phm.danhh__/",
   facebook: "https://www.facebook.com/phmdanh1650/",
   zaloDisplay: "+84 834 573 195",
